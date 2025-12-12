@@ -39,4 +39,5 @@ print("recorrer un string")
 
 for i in "Paula Valiente":
     if i == "V":
-        print("Existe V: ", i)
+        print("Existe V", i)
+
