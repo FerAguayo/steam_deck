@@ -14,27 +14,46 @@ Retos
 2.No permitas introducir números negativos
 """
 
-
-#Entrada
-numero1 = (input("Ingrese el primer número: "))
-numero2 = (input("Ingrese el segundo número: "))
-
-#Control
-
-while not(numero1.isnumeric()) and not(numero2.isnumeric()) :
-
-    print("Esta función solo admite números positivos, por favor ingrese los datos de nuevo: ")
+seguir = True
+while seguir:
+    #Entrada
     numero1 = (input("Ingrese el primer número: "))
     numero2 = (input("Ingrese el segundo número: "))
+    operacion = (input("Qué deseas hacer? +,-,* o /"))
+
+    #Control
+    while operacion not in "+-*/":
+        print("Caracter de operación no válido, vuelva a ingresarlo")
+        operacion = (input("Qué deseas hacer? +,-,* o /"))
+
+    while not(numero1.isnumeric()) and not(numero2.isnumeric()) :
+
+        print("Esta función solo admite números positivos, por favor ingrese los datos de nuevo: ")
+        numero1 = (input("Ingrese el primer número: "))
+        numero2 = (input("Ingrese el segundo número: "))
 
 
 
-#Transformación
-numero1 = float(numero1)
-numero2 = float (numero2)
+    #Transformación
+    numero1 = int(numero1) or float(numero1)
+    numero2 = int(numero2) or float (numero2)
 
 
-#Salida
-print(f"La suma es: {numero1 + numero2}\nLa resta es: {numero1 + numero2}\nLa multiplicación es: {numero1 * numero2}\nLa división es: {numero1 / numero2}")
+    #Salida
+    resultado = 0
+    if operacion == "+":
+        resultado = numero1 + numero2
+    elif operacion == "-":
+        resultado = numero1 - numero2
+    elif operacion == "*":
+        resultado = numero1 * numero2
+    elif operacion == "/":
+        resultado = numero1 / numero2
+    print(f"{numero1}{operacion}{numero2}={resultado}")
+
+    continuar = input("Desea seguir utilizando la calculadora? Y/n: ")
+    if continuar == "n":
+        seguir = False
+        print("Fin de la aplicación")
 
 
